@@ -1,0 +1,16 @@
+name: 'Record App Deployments'
+description: 'Record App Deployments'
+author: 'Your name or organization here'
+inputs:
+  deploy-evn: # change this
+    required: true
+    description: 'The project deployment environent  '
+  project:
+    required: true
+    description: 'Project to be deployed'
+  tag-name:
+    required:
+    description: 'Tag name applied to the project being deployed'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

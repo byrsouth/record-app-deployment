@@ -112,10 +112,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.recordDeployment = void 0;
+/* eslint-disable sort-imports */
+/* eslint-disable filenames/match-regex */
 const core = __importStar(__nccwpck_require__(2186));
+const https = __importStar(__nccwpck_require__(5687));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
-        core.info(JSON.stringify(deployData));
+        const options = {
+            protocol: 'https',
+            hostname: 'httpappdeployment.azurewebsites.net',
+            path: '/api/httpappdeployment',
+            method: 'POST'
+        };
+        const request = https.request(options, res => {
+            core.info(`status-code: ${res.statusCode}`);
+            res.on('data', data => {
+                core.info(data);
+            });
+        });
+        request.write(deployData);
     });
 }
 exports.recordDeployment = recordDeployment;

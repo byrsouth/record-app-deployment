@@ -119,7 +119,7 @@ const https = __importStar(__nccwpck_require__(5687));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
         const options = {
-            protocol: 'https',
+            protocol: 'https:',
             hostname: 'httpappdeployment.azurewebsites.net',
             path: '/api/httpappdeployment',
             method: 'POST'

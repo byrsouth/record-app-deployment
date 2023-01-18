@@ -121,8 +121,8 @@ const httpm = __importStar(__nccwpck_require__(6255));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
         const _http = new httpm.HttpClient();
-        const res = yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
-        core.info(JSON.stringify(res.message));
+        yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
+        core.info(JSON.stringify(JSON.stringify(deployData)));
     });
 }
 exports.recordDeployment = recordDeployment;

@@ -6,7 +6,7 @@ import * as https from 'https'
 
 export async function recordDeployment(deployData: DeployData): Promise<void> {
   const options = {
-    protocol: 'https',
+    protocol: 'https:',
     hostname: 'httpappdeployment.azurewebsites.net',
     path: '/api/httpappdeployment',
     method: 'POST'

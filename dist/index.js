@@ -35,6 +35,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/* eslint-disable object-shorthand */
 /* eslint-disable prettier/prettier */
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
@@ -50,8 +51,8 @@ function run() {
             const commitData = event.commits[0];
             const deployData = {
                 project: projectName,
-                deployEvn,
-                tagName,
+                deployEvn: deployEvn,
+                tagName: tagName,
                 commit: {
                     id: commitData.id,
                     userName: commitData.author.username,

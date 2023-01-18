@@ -1,3 +1,5 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable prettier/prettier */
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import { DeployData } from './deployDataModel';
@@ -13,16 +15,16 @@ async function run(): Promise<void> {
       const event = github.context.payload;
       const commitData = event.commits[0];
 
-      let deployData: DeployData = {
+      const deployData: DeployData = {
          project: projectName,
          deployEvn: deployEvn,
          tagName: tagName,
          commit: {
             id: commitData.id,
-            userName: commitData.author.userName,
+            userName: commitData.author.username,
             branch: event.repository?.default_branch,
-            branchURL: event.repository!.branches_url,
-            commitURL: event.repository!.commits_url,
+            branchURL: event.repository?.branches_url,
+            commitURL: event.repository?.commits_url,
          },
       };
 

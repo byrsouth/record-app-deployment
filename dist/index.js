@@ -35,11 +35,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/* eslint-disable prettier/prettier */
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const recordDeployment_1 = __nccwpck_require__(5597);
 function run() {
-    var _a;
+    var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const projectName = core.getInput('project');
@@ -47,16 +48,16 @@ function run() {
             const tagName = core.getInput('tag-name');
             const event = github.context.payload;
             const commitData = event.commits[0];
-            let deployData = {
+            const deployData = {
                 project: projectName,
-                deployEvn: deployEvn,
-                tagName: tagName,
+                deployEvn,
+                tagName,
                 commit: {
                     id: commitData.id,
-                    userName: commitData.author.userName,
+                    userName: commitData.author.username,
                     branch: (_a = event.repository) === null || _a === void 0 ? void 0 : _a.default_branch,
-                    branchURL: event.repository.branches_url,
-                    commitURL: event.repository.commits_url,
+                    branchURL: (_b = event.repository) === null || _b === void 0 ? void 0 : _b.branches_url,
+                    commitURL: (_c = event.repository) === null || _c === void 0 ? void 0 : _c.commits_url,
                 },
             };
             yield (0, recordDeployment_1.recordDeployment)(deployData);

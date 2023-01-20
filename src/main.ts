@@ -32,7 +32,7 @@ async function run(): Promise<void> {
 
       await recordDeployment(deployData);
 
-      core.info(JSON.stringify(deployData));
+    
    } catch (error) {
       if (error instanceof Error) {
          core.setFailed(error.message);

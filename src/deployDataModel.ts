@@ -1,7 +1,8 @@
 export interface DeployData {
    project: string;
-   deployEvn: string;
+   deployEnv: string;
    tagName: string;
+   version :string
    commit: {
       id: string;
       userName: string;

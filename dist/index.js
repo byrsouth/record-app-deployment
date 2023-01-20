@@ -45,14 +45,17 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const projectName = core.getInput('project');
-            const deployEvn = core.getInput('deploy-env');
+            const deployEnv = core.getInput('deploy-env');
             const tagName = core.getInput('tag-name');
+            const version = core.getInput('verson');
+            ;
             const event = github.context.payload;
             const commitData = event.commits[0];
             const deployData = {
                 project: projectName,
-                deployEvn: deployEvn,
+                deployEnv: deployEnv,
                 tagName: tagName,
+                version: version,
                 commit: {
                     id: commitData.id,
                     userName: commitData.author.username,
@@ -121,8 +124,8 @@ const httpm = __importStar(__nccwpck_require__(6255));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
         const _http = new httpm.HttpClient();
-        yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
-        core.info(JSON.stringify(JSON.stringify(deployData)));
+        const res = yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
+        core.info(JSON.stringify(res.message));
     });
 }
 exports.recordDeployment = recordDeployment;

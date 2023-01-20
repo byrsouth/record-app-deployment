@@ -9,16 +9,18 @@ import { recordDeployment } from './recordDeployment';
 async function run(): Promise<void> {
    try {
       const projectName: string = core.getInput('project');
-      const deployEvn: string = core.getInput('deploy-env');
+      const deployEnv: string = core.getInput('deploy-env');
       const tagName: string = core.getInput('tag-name');
-
+      const version: string = core.getInput('verson');
+;
       const event = github.context.payload;
       const commitData = event.commits[0];
 
       const deployData: DeployData = {
          project: projectName,
-         deployEvn: deployEvn,
+         deployEnv: deployEnv,
          tagName: tagName,
+         version: version,
          commit: {
             id: commitData.id,
             userName: commitData.author.username,

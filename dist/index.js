@@ -65,7 +65,6 @@ function run() {
                 },
             };
             yield (0, recordDeployment_1.recordDeployment)(deployData);
-            core.info(JSON.stringify(deployData));
         }
         catch (error) {
             if (error instanceof Error) {

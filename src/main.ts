@@ -16,15 +16,16 @@ async function run(): Promise<void> {
       const event = github.context.payload;
       const commitData = event.commits[0];
 
+
       const deployData: DeployData = {
          project: projectName,
          deployEnv: deployEnv,
          tagName: tagName,
+         branch: event.repository?.default_branch,
          version: version,
          commit: {
             id: commitData.id,
             userName: commitData.author.username,
-            branch: event.repository?.default_branch,
             branchURL: event.repository?.branches_url,
             commitURL: event.repository?.commits_url,
          },

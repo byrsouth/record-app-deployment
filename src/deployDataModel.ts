@@ -3,10 +3,10 @@ export interface DeployData {
    deployEnv: string;
    tagName: string;
    version :string
+   branch: string;
    commit: {
       id: string;
       userName: string;
-      branch: string;
       branchURL: string;
       commitURL: string;
    };

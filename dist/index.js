@@ -55,11 +55,11 @@ function run() {
                 project: projectName,
                 deployEnv: deployEnv,
                 tagName: tagName,
+                branch: (_a = event.repository) === null || _a === void 0 ? void 0 : _a.default_branch,
                 version: version,
                 commit: {
                     id: commitData.id,
                     userName: commitData.author.username,
-                    branch: (_a = event.repository) === null || _a === void 0 ? void 0 : _a.default_branch,
                     branchURL: (_b = event.repository) === null || _b === void 0 ? void 0 : _b.branches_url,
                     commitURL: (_c = event.repository) === null || _c === void 0 ? void 0 : _c.commits_url,
                 },

@@ -1,5 +1,5 @@
 /* eslint-disable object-shorthand */
-/* eslint-disable prettier/prettier */
+
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import {DeployData} from './deployDataModel'

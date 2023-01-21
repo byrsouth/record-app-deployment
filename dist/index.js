@@ -6,6 +6,7 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 
 "use strict";
 
+/* eslint-disable object-shorthand */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -35,8 +36,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-/* eslint-disable object-shorthand */
-/* eslint-disable prettier/prettier */
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const recordDeployment_1 = __nccwpck_require__(5597);
@@ -113,13 +112,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.recordDeployment = void 0;
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/semi */
+/* eslint-disable sort-imports */
+/* eslint-disable filenames/match-regex */
+const core = __importStar(__nccwpck_require__(2186));
 const httpm = __importStar(__nccwpck_require__(6255));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
         const _http = new httpm.HttpClient();
-        yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
-        //   const message: string | undefined = res.message.statusMessage;
-        //   core.info(JSON.stringify(message));
+        const res = yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
+        core.info(JSON.stringify(res.message));
     });
 }
 exports.recordDeployment = recordDeployment;

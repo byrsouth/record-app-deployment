@@ -38,6 +38,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
+//import {DeployData} from './deployDataModel'
 const recordDeployment_1 = __nccwpck_require__(5597);
 function run() {
     var _a, _b, _c;
@@ -114,15 +115,15 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.recordDeployment = void 0;
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/semi */
-/* eslint-disable sort-imports */
 /* eslint-disable filenames/match-regex */
 const core = __importStar(__nccwpck_require__(2186));
+//import {DeployData} from './deployDataModel'
 const httpm = __importStar(__nccwpck_require__(6255));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
         const _http = new httpm.HttpClient();
-        const res = yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
-        core.info(JSON.stringify(res.message));
+        yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
+        core.info(JSON.stringify(deployData));
     });
 }
 exports.recordDeployment = recordDeployment;

@@ -2,7 +2,7 @@
 
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import {DeployData} from './deployDataModel'
+//import {DeployData} from './deployDataModel'
 
 import {recordDeployment} from './recordDeployment'
 
@@ -16,7 +16,7 @@ async function run(): Promise<void> {
     const event = github.context.payload
     const commitData = event.commits[0]
 
-    const deployData: DeployData = {
+    const deployData = {
       project: projectName,
       deployEnv: deployEnv,
       tagName: tagName,

@@ -48,7 +48,6 @@ function run() {
             const deployEnv = core.getInput('deploy-env');
             const tagName = core.getInput('tag-name');
             const version = core.getInput('verson');
-            ;
             const event = github.context.payload;
             const commitData = event.commits[0];
             const deployData = {
@@ -61,8 +60,8 @@ function run() {
                     id: commitData.id,
                     userName: commitData.author.username,
                     branchURL: (_b = event.repository) === null || _b === void 0 ? void 0 : _b.branches_url,
-                    commitURL: (_c = event.repository) === null || _c === void 0 ? void 0 : _c.commits_url,
-                },
+                    commitURL: (_c = event.repository) === null || _c === void 0 ? void 0 : _c.commits_url
+                }
             };
             yield (0, recordDeployment_1.recordDeployment)(deployData);
         }
@@ -114,17 +113,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.recordDeployment = void 0;
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/semi */
-/* eslint-disable sort-imports */
-/* eslint-disable filenames/match-regex */
-const core = __importStar(__nccwpck_require__(2186));
 const httpm = __importStar(__nccwpck_require__(6255));
 function recordDeployment(deployData) {
     return __awaiter(this, void 0, void 0, function* () {
         const _http = new httpm.HttpClient();
-        const res = yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
-        core.info(JSON.stringify(res.message));
+        yield _http.post('https://httpappdeployment.azurewebsites.net/api/httpappdeployment', JSON.stringify(deployData));
+        //   const message: string | undefined = res.message.statusMessage;
+        //   core.info(JSON.stringify(message));
     });
 }
 exports.recordDeployment = recordDeployment;

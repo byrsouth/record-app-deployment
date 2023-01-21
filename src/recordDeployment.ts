@@ -12,5 +12,6 @@ export async function recordDeployment(deployData: DeployData): Promise<void> {
       'https://httpappdeployment.azurewebsites.net/api/httpappdeployment',
       JSON.stringify(deployData)
    );
-   core.info(JSON.stringify(res.message));
+   const message: string | undefined = res.message.statusMessage;
+   core.info(JSON.stringify(message));
 }

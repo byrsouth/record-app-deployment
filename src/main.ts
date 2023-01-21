@@ -1,20 +1,20 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable prettier/prettier */
-import * as core from '@actions/core';
-import * as github from '@actions/github';
-import { DeployData } from './deployDataModel';
+import * as core from '@actions/core'
+import * as github from '@actions/github'
+import { DeployData } from './deployDataModel'
 
-import { recordDeployment } from './recordDeployment';
+import { recordDeployment } from './recordDeployment'
 
 async function run(): Promise<void> {
    try {
-      const projectName: string = core.getInput('project');
-      const deployEnv: string = core.getInput('deploy-env');
-      const tagName: string = core.getInput('tag-name');
-      const version: string = core.getInput('verson');
-;
-      const event = github.context.payload;
-      const commitData = event.commits[0];
+      const projectName: string = core.getInput('project')
+      const deployEnv: string = core.getInput('deploy-env')
+      const tagName: string = core.getInput('tag-name')
+      const version: string = core.getInput('verson')
+
+      const event = github.context.payload
+      const commitData = event.commits[0]
 
 
       const deployData: DeployData = {
@@ -29,17 +29,17 @@ async function run(): Promise<void> {
             branchURL: event.repository?.branches_url,
             commitURL: event.repository?.commits_url,
          },
-      };
+      }
 
-      await recordDeployment(deployData);
+      await recordDeployment(deployData)
 
     
    } catch (error) {
       if (error instanceof Error) {
-         core.setFailed(error.message);
-         core.error(error);
+         core.setFailed(error.message)
+         core.error(error)
       }
    }
 }
 
-run();
+run()

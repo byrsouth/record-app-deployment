@@ -8,10 +8,10 @@ import * as httpm from '@actions/http-client';
 
 export async function recordDeployment(deployData: DeployData): Promise<void> {
    const _http: httpm.HttpClient = new httpm.HttpClient();
-   const res: httpm.HttpClientResponse = await _http.post(
+    _http.post(
       'https://httpappdeployment.azurewebsites.net/api/httpappdeployment',
       JSON.stringify(deployData)
    );
-   const message: string | undefined = res.message.statusMessage;
-   core.info(JSON.stringify(message));
+ //  const message: string | undefined = res.message.statusMessage;
+   //core.info(JSON.stringify(message));
 }

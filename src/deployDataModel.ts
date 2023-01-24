@@ -5,6 +5,7 @@ export interface DeployData {
   tagName: string
   version: string
   branch: string
+  timestamp: string
   commit: {
     id: string
     userName: string

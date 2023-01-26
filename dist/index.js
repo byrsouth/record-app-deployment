@@ -56,7 +56,7 @@ function run() {
                 tagName: tagName,
                 branch: (_a = event.repository) === null || _a === void 0 ? void 0 : _a.default_branch,
                 version: version,
-                timestamp: new Date().getTime(),
+                timestamp: new Date().toUTCString(),
                 commit: {
                     id: commitData.id,
                     userName: commitData.author.username,

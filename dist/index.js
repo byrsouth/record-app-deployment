@@ -41,27 +41,28 @@ const github = __importStar(__nccwpck_require__(5438));
 //import {DeployData} from './deployDataModel'
 const recordDeployment_1 = __nccwpck_require__(5597);
 function run() {
-    var _a, _b, _c;
+    var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const projectName = core.getInput('project');
             const deployEnv = core.getInput('deploy-env');
             const tagName = core.getInput('tag-name');
-            const version = core.getInput('verson');
+            const version = core.getInput('version');
+            const branch = core.getInput('branch');
             const event = github.context.payload;
             const commitData = event.commits[0];
             const deployData = {
                 project: projectName,
                 deployEnv: deployEnv,
                 tagName: tagName,
-                branch: (_a = event.repository) === null || _a === void 0 ? void 0 : _a.default_branch,
+                branch: branch,
                 version: version,
                 timestamp: new Date().toUTCString(),
                 commit: {
                     id: commitData.id,
                     userName: commitData.author.username,
-                    branchURL: (_b = event.repository) === null || _b === void 0 ? void 0 : _b.branches_url,
-                    commitURL: (_c = event.repository) === null || _c === void 0 ? void 0 : _c.commits_url
+                    branchURL: (_a = event.repository) === null || _a === void 0 ? void 0 : _a.branches_url,
+                    commitURL: (_b = event.repository) === null || _b === void 0 ? void 0 : _b.commits_url
                 }
             };
             yield (0, recordDeployment_1.recordDeployment)(deployData);

@@ -11,7 +11,8 @@ async function run(): Promise<void> {
     const projectName: string = core.getInput('project')
     const deployEnv: string = core.getInput('deploy-env')
     const tagName: string = core.getInput('tag-name')
-    const version: string = core.getInput('verson')
+    const version: string = core.getInput('version')
+    const branch: string = core.getInput('branch')
 
     const event = github.context.payload
     const commitData = event.commits[0]
@@ -20,7 +21,7 @@ async function run(): Promise<void> {
       project: projectName,
       deployEnv: deployEnv,
       tagName: tagName,
-      branch: event.repository?.default_branch,
+      branch: branch,
       version: version,
       timestamp: new Date().toUTCString(),
       commit: {

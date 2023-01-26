@@ -22,7 +22,7 @@ async function run(): Promise<void> {
       tagName: tagName,
       branch: event.repository?.default_branch,
       version: version,
-      timestamp: new Date().getTime(),
+      timestamp: new Date().toUTCString(),
       commit: {
         id: commitData.id,
         userName: commitData.author.username,
